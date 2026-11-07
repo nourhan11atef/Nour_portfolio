@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nourhan Atef — Machine Learning & Data Science</title>
+<meta name="description" content="Portfolio of Nourhan Atef: CS & AI student at Cairo University, Samsung Innovation Campus AI Track graduate. Machine learning, recommender systems, LLM pipelines, computer vision.">
+<style>
+:root{--bg:#fafaf9;--surface:#fff;--text:#1c1917;--muted:#57534e;--line:#e7e5e4;--accent:#0f766e;--accent-soft:#ccfbf1;--chip:#f5f5f4}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0a09;--surface:#171413;--text:#f5f5f4;--muted:#a8a29e;--line:#292524;--accent:#2dd4bf;--accent-soft:#134e4a;--chip:#1f1b19}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:16px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:700;color:var(--text);letter-spacing:-.01em}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px}
+nav ul a{color:var(--muted)}nav ul a:hover{color:var(--text);text-decoration:none}
+section{padding:72px 0 8px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:28px}
+.hero{padding:88px 0 24px}
+.hero .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:99px;margin-bottom:22px}
+.hero .status i{width:8px;height:8px;border-radius:50%;background:#16a34a}
+h1{font-size:clamp(36px,6vw,56px);line-height:1.1;letter-spacing:-.03em}
+.role{font-size:clamp(18px,2.4vw,22px);color:var(--muted);margin:14px 0 18px}
+.lead{max-width:640px;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{padding:10px 20px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid var(--line);color:var(--text);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme:dark){.btn.primary{color:#04201d}}
+.btn:hover{text-decoration:none;opacity:.88}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:48px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em}.stat span{font-size:13px;color:var(--muted)}
+.about p{max-width:720px;color:var(--muted);margin-bottom:14px}.about strong{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card h3{font-size:16px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;background:var(--chip);border:1px solid var(--line);color:var(--muted);padding:3px 10px;border-radius:6px}
+.proj{display:flex;flex-direction:column}
+.proj .meta{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.proj p{font-size:14.5px;color:var(--muted);margin:8px 0 14px;flex:1}
+.proj .tag{display:inline-block;font-size:11.5px;font-weight:600;background:var(--accent-soft);color:var(--accent);padding:2px 9px;border-radius:99px;margin-bottom:10px;align-self:flex-start}
+.feature{grid-column:1/-1}
+.tl{border-left:2px solid var(--line);padding-left:22px;display:grid;gap:26px}
+.tl .item{position:relative}
+.tl .item:before{content:"";position:absolute;left:-29px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tl h3{font-size:16px}.tl .meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+.tl ul{padding-left:18px;color:var(--muted);font-size:14.5px}
+.certs{list-style:none;display:grid;gap:10px}
+.certs li{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:15px}
+.certs small{color:var(--muted);font-size:13px}
+.contact .grid a{display:block;color:var(--text)}
+.contact .card small{display:block;color:var(--muted);font-size:12.5px}
+footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+
+/* motion + responsive additions */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:30}
+body:before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:radial-gradient(40% 35% at 20% 20%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),radial-gradient(35% 30% at 80% 70%,color-mix(in srgb,#6366f1 12%,transparent),transparent 70%);animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(4%,3%,0) scale(1.08)}}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.photo{position:relative;justify-self:center;width:min(100%,340px);aspect-ratio:1}
+.photo img{position:relative;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:38% 62% 55% 45%/48% 42% 58% 52%;border:4px solid var(--surface);animation:morph 10s ease-in-out infinite,floaty 6s ease-in-out infinite}
+.ring{position:absolute;inset:-12px;border-radius:38% 62% 55% 45%/48% 42% 58% 52%;background:conic-gradient(from 0deg,var(--accent),#6366f1,var(--accent));opacity:.55;filter:blur(14px);animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes morph{50%{border-radius:55% 45% 40% 60%/55% 55% 45% 45%}}
+@keyframes floaty{50%{transform:translateY(-8px)}}
+.caret{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .status i{animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}100%{box-shadow:0 0 0 9px rgba(22,163,74,0)}}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+.card,.stat,.certs li,.btn{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,opacity .2s}
+.js .reveal.in.card:hover,.card:hover,.stat:hover,.certs li:hover{transform:translateY(-4px);box-shadow:0 12px 28px -12px rgba(0,0,0,.25);border-color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+nav ul a{position:relative;padding:4px 0}
+nav ul a:after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:width .25s}
+nav ul a:hover:after,nav ul a.active:after{width:100%}
+nav ul a.active{color:var(--text)}
+.menu-btn{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--text);transition:transform .25s,opacity .25s}
+.menu-btn[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:760px){
+.hero{padding-top:48px}
+.hero-grid{grid-template-columns:1fr;gap:28px;text-align:center}
+.photo{order:-1;width:min(70%,240px)}
+.lead{margin:0 auto}.btns{justify-content:center}
+.menu-btn{display:flex}
+nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 16px;font-size:16px}
+nav ul.open{display:flex}
+nav ul li a{display:block;padding:12px 0}
+nav ul a:after{display:none}
+section{padding-top:56px}
+.wrap{padding:0 18px}
+.certs li{flex-direction:column;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header><div class="wrap"><nav>
+<a class="logo" href="#top">Nourhan Atef</a>
+<button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav></div></header>
+
+<main class="wrap" id="top">
+<section class="hero">
+<div class="hero-grid"><div class="hero-text">
+<div class="status"><i></i>Open to ML internships &middot; Remote or Cairo</div>
+<h1>Nourhan Atef</h1>
+<p class="role"><span id="typed">Machine Learning &amp; Data Science</span><span class="caret"></span></p>
+<p class="lead">Computer Science &amp; AI student at Cairo University and Samsung Innovation Campus AI Track graduate. I build and evaluate machine learning models, recommender systems, and LLM pipelines in Python.</p>
+<div class="btns">
+<a class="btn primary" href="#projects">View projects</a>
+<a class="btn" href="https://github.com/nourhan11atef">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/nourhan-hapashy-576a14283">LinkedIn</a>
+<a class="btn" href="Nourhan_Atef_CV_ML_Engineer.pdf">Download CV</a>
+</div>
+</div>
+<div class="photo"><div class="ring"></div><img src="photo.jpg" alt="Portrait of Nourhan Atef" width="360" height="360" fetchpriority="high"></div>
+</div>
+<div class="stats">
+<div class="stat"><b data-count="8">8</b><span>ML &amp; data projects</span></div>
+<div class="stat"><b>SIC</b><span>AI Track graduate, 2026</span></div>
+<div class="stat"><b data-count="6">6</b><span>Certifications</span></div>
+<div class="stat"><b>Arabic / English</b><span>Native / B2</span></div>
+</div>
+</section>
+
+<section id="about" class="about">
+<h2>About</h2>
+<p>I'm a <strong>Computer Science &amp; Artificial Intelligence</strong> student at Cairo University, majoring in Data Science. I enjoy the full loop of applied ML: cleaning messy data, running experiments, comparing models honestly, and explaining what the results mean.</p>
+<p>Through the <strong>Samsung Innovation Campus AI Track</strong> I worked across classical ML, deep learning (TensorFlow/Keras), time-series forecasting, NLP, LLMs, RAG, agentic workflows, and MLOps with MLflow. My graduation project was a churn prediction and recommendation system on the H&amp;M retail dataset.</p>
+<p>I also teach programming in Arabic through <strong>Code with Nour</strong> on Instagram, which keeps my fundamentals sharp and my explanations clear.</p>
+</section>
+
+<section id="projects">
+<h2>Selected Projects</h2>
+<div class="grid">
+<article class="card proj feature">
+<span class="tag">Graduation project &middot; Samsung SIC</span>
+<div class="meta">2026 &middot; Team 9</div>
+<h3>H&amp;M Personalized Fashion Recommendations: "Beyond The Purchase"</h3>
+<p>Two-stage recommender system and customer churn prediction model on the H&amp;M Kaggle dataset, built on a 10% customer sample. I cleaned and joined the customer, article, and transaction tables, led the exploratory analysis, and framed it around 10 business questions with supporting visualizations.</p>
+<div class="chips"><span class="chip">Python</span><span class="chip">Recommender Systems</span><span class="chip">Churn Prediction</span><span class="chip">Pandas</span><span class="chip">EDA</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">2026</div>
+<h3>OmniPulse: Hybrid Sentiment Inference</h3>
+<p>Compared a Hugging Face DistilBERT classifier with a local Ollama LLM (llama3.2:1b) returning structured JSON on 50K IMDB reviews, with a client that routes between local and cloud inference.</p>
+<div class="chips"><span class="chip">Hugging Face</span><span class="chip">Ollama</span><span class="chip">LLMs</span><span class="chip">NLP</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">2026</div>
+<h3>Time-Series Forecasting with RNN/LSTM</h3>
+<p>Forecast monthly milk production using SimpleRNN and LSTM models, with sequence windowing, scaling, and train/test splits that respect temporal order.</p>
+<div class="chips"><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">Time Series</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">2026</div>
+<h3>Fashion-MNIST: MLP vs CNN</h3>
+<p>Benchmarked a flattened MLP against a LeNet-5 inspired CNN, with training curves, a classification report, a confusion matrix, and a model comparison table.</p>
+<div class="chips"><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">CNN</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">September 2026</div>
+<h3>NYC Airbnb Analysis &amp; ML</h3>
+<p>Cleaned and explored the NYC listings dataset, trained and evaluated machine learning models, and presented the methodology and findings.</p>
+<div class="chips"><span class="chip">Python</span><span class="chip">Scikit-learn</span><span class="chip">EDA</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">August 2026 &middot; Team project</div>
+<h3>Video Game Sales Analysis</h3>
+<p>Regional analysis of genres, publishers, platforms, and sales, with a Power BI data model and an interactive dashboard built for business decision making.</p>
+<div class="chips"><span class="chip">Python</span><span class="chip">Power BI</span><span class="chip">DAX</span></div>
+</article>
+
+<article class="card proj">
+<span class="tag">In progress</span>
+<div class="meta">Kaggle &middot; Deadline January 2027</div>
+<h3>NFL Big Data Bowl 2027</h3>
+<p>Team entry using multi-season player tracking data (positions over time) to link combine measurements to NFL performance.</p>
+<div class="chips"><span class="chip">Python</span><span class="chip">Tracking Data</span><span class="chip">Kaggle</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">February 2026 &middot; <a href="https://github.com/nourhan11atef/Hand_Trackerrr">GitHub</a></div>
+<h3>Real-Time Hand Tracking</h3>
+<p>Multi-hand detection with finger-position identification and dynamic finger counting from live video.</p>
+<div class="chips"><span class="chip">OpenCV</span><span class="chip">MediaPipe</span><span class="chip">Computer Vision</span></div>
+</article>
+
+<article class="card proj">
+<div class="meta">April 2026 &middot; <a href="https://github.com/nourhan11atef/AIVoice_Assistant">GitHub</a></div>
+<h3>Virtual Voice Assistant</h3>
+<p>End-to-end voice assistant with speech recognition, offline text-to-speech, and API integrations (YouTube, Wikipedia) using multi-intent command parsing.</p>
+<div class="chips"><span class="chip">SpeechRecognition</span><span class="chip">pyttsx3</span><span class="chip">NLP</span></div>
+</article>
+</div>
+<p style="margin-top:18px;font-size:14px;color:var(--muted)">More on <a href="https://github.com/nourhan11atef">GitHub</a>, including a <a href="https://github.com/nourhan11atef/Black_Digital_Clock">digital clock app</a> and a <a href="https://github.com/nourhan11atef/Ping-_Pong_python">ping pong game</a>.</p>
+</section>
+
+<section id="experience">
+<h2>Experience &amp; Education</h2>
+<div class="tl">
+<div class="item"><h3>AI Track Intern (Graduate), Samsung Innovation Campus</h3>
+<div class="meta">Life Makers Foundation &middot; July 2026 &ndash; November 2026</div>
+<ul><li>Intensive program across statistics, machine learning, deep learning, NLP, LLMs, and AI automation.</li>
+<li>Covered RAG, fine-tuning, agentic AI, MLflow experiment tracking, and model deployment (Flask, Streamlit, Gradio).</li>
+<li>Delivered three capstone projects and a team graduation project, presented to instructors.</li></ul></div>
+<div class="item"><h3>B.Sc. Computer Science &amp; Artificial Intelligence</h3>
+<div class="meta">Cairo University, Faculty of Computers &amp; AI &middot; 2025 &ndash; Present &middot; Major: Data Science</div>
+<ul><li>Python, Discrete Mathematics, Data Structures &amp; Algorithms, C++ and OOP, Operation Research, Embedded Systems.</li></ul></div>
+<div class="item"><h3>Founder, Code with Nour</h3>
+<div class="meta">Instagram &middot; <a href="https://www.instagram.com/codewithnour/">@codewithnour</a></div>
+<ul><li>Educational content that teaches programming and AI concepts in Arabic through real projects.</li></ul></div>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="grid">
+<div class="card"><h3>Machine Learning</h3><div class="chips"><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">Model evaluation</span><span class="chip">Time series</span><span class="chip">Recommender systems</span></div></div>
+<div class="card"><h3>LLMs &amp; Agents</h3><div class="chips"><span class="chip">Hugging Face</span><span class="chip">Ollama</span><span class="chip">RAG</span><span class="chip">Prompt engineering</span><span class="chip">Agentic workflows</span><span class="chip">n8n</span><span class="chip">Make</span></div></div>
+<div class="card"><h3>Data &amp; Analytics</h3><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Looker Studio</span></div></div>
+<div class="card"><h3>MLOps &amp; Tools</h3><div class="chips"><span class="chip">MLflow</span><span class="chip">Flask</span><span class="chip">Streamlit</span><span class="chip">Gradio</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Colab</span></div></div>
+<div class="card"><h3>Computer Vision</h3><div class="chips"><span class="chip">OpenCV</span><span class="chip">MediaPipe</span><span class="chip">CNNs</span><span class="chip">Image processing</span></div></div>
+<div class="card"><h3>Languages</h3><div class="chips"><span class="chip">Python (advanced)</span><span class="chip">C++ (beginner)</span><span class="chip">Arabic (native)</span><span class="chip">English (B2)</span></div></div>
+</div>
+</section>
+
+<section id="certifications">
+<h2>Certifications</h2>
+<ul class="certs">
+<li><span>Samsung Innovation Campus AI Track Certificate <small>Samsung &amp; Life Makers Foundation</small></span><small>2026</small></li>
+<li><span>AI Fundamentals with IBM SkillsBuild <small>IBM &amp; Cisco Networking Academy</small></span><small>May 2026</small></li>
+<li><span>AUC-SHE CAN Sustainable Innovators Boot Camp <small>The American University in Cairo</small></span><small>August 2026</small></li>
+<li><span>Introduction to SQL <small>DataCamp</small></span><small>May 2026</small></li>
+<li><span>Introduction to Cybersecurity <small>Cisco Networking Academy</small></span><small>December 2025</small></li>
+<li><span>Teach for Non-Tech Program <small>I Career / Digitria</small></span><small>September 2025</small></li>
+</ul>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact</h2>
+<p style="max-width:620px;color:var(--muted);margin-bottom:22px">I'm looking for a machine learning internship where I can contribute to model training, evaluation, and applied AI work. The best way to reach me is email.</p>
+<div class="grid">
+<div class="card"><small>Email</small><a href="mailto:nour68atef@gmail.com">nour68atef@gmail.com</a></div>
+<div class="card"><small>LinkedIn</small><a href="https://www.linkedin.com/in/nourhan-hapashy-576a14283">nourhan-hapashy</a></div>
+<div class="card"><small>GitHub</small><a href="https://github.com/nourhan11atef">nourhan11atef</a></div>
+<div class="card"><small>Phone</small><a href="tel:+201153465773">+20 115 346 5773</a></div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 Nourhan Atef &middot; Cairo, Egypt</div></footer>
+<script>
+(function(){
+var d=document,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+d.documentElement.classList.add('js');
+var els=d.querySelectorAll('.card,.stat,.tl .item,.certs li,main h2');
+els.forEach(function(e,i){e.classList.add('reveal');e.style.setProperty('--d',(i%4)*80+'ms')});
+function count(el){var n=+el.dataset.count;if(rm){el.textContent=n;return}var t0=null;el.textContent=0;
+ function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');var c=x.target.querySelector('[data-count]');if(c)count(c);io.unobserve(x.target)}})},{threshold:.12});
+ els.forEach(function(e){io.observe(e)});
+ var links=d.querySelectorAll('nav ul a');
+ var so=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+x.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+ d.querySelectorAll('section[id]').forEach(function(s){so.observe(s)});
+}else{els.forEach(function(e){e.classList.add('in')})}
+var bar=d.getElementById('bar');
+addEventListener('scroll',function(){var h=d.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+var btn=d.querySelector('.menu-btn'),ul=d.querySelector('nav ul');
+btn.addEventListener('click',function(){var o=ul.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+ul.addEventListener('click',function(e){if(e.target.tagName==='A'){ul.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
+var t=d.getElementById('typed');
+if(t&&!rm){var ph=['Machine Learning & Data Science','Recommender Systems','LLM & Agentic Pipelines','Time-Series Forecasting'],i=0,j=0,del=false;
+ (function tick(){var w=ph[i];t.textContent=w.slice(0,j);
+  if(!del&&j<w.length){j++;setTimeout(tick,60)}
+  else if(!del){del=true;setTimeout(tick,1600)}
+  else if(j>0){j--;setTimeout(tick,28)}
+  else{del=false;i=(i+1)%ph.length;setTimeout(tick,300)}})();}
+})();
+</script>
+</body>
+</html>
